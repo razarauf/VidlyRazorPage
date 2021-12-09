@@ -30,5 +30,6 @@ namespace VidlyRazorPage.Models
         // When eager loading using ".include", e.g. _context.Movies.Include(c => c.Genre),
         // only the single name of the genre will be stored in this property
         public Genre Genre { get; set; }
+
     }
 }
