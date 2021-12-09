@@ -1,0 +1,44 @@
+﻿@model VidlyRazorPage.Models.MovieViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*
+    Html helpers ending in "For", e.g. @Html.LabelFor take a property for binding.
+    Whereas just @Html.Label takes strings
+*@
+
+@using (Html.BeginForm("Index", "Movie"))
+{
+    @Html.LabelFor(m => m.Movie.Name)
+    @Html.TextBoxFor(m => m.Movie.Name)
+
+    <br />
+    @Html.LabelFor(m => m.Movie.Description)
+    @Html.TextAreaFor(m => m.Movie.Description, new { @class = "form-control", rows = "5" })
+
+    <br />
+    @*
+        Elements like RadioButton group together by the "name"
+        Label's "for" property needs to be the same as the ID of the radiobutton 
+    *@
+    @Html.RadioButtonFor(m => m.Movie.Rating, "0", new { id = "rating-0" })
+    @Html.Label("rating-0", "Rating 0")
+    @Html.RadioButtonFor(m => m.Movie.Rating, "1", new { id = "rating-1" })
+    @Html.Label("rating-1", "Rating 1")
+    @Html.RadioButtonFor(m => m.Movie.Rating, "2", new { id = "rating-2" })
+    @Html.Label("rating-2", "Rating 2")
+    @Html.RadioButtonFor(m => m.Movie.Rating, "3", new { id = "rating-3" })
+    @Html.Label("rating-3", "Rating 3")
+
+    <br />
+    @Html.CheckBoxFor(m => m.Movie.IsInTheatre) @Html.LabelFor(m => m.Movie.IsInTheatre)
+
+    <br />
+    @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "GenreId", "Name"), "--Select a Genre--")
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+}
