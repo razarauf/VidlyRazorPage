@@ -36,6 +36,9 @@ namespace VidlyRazorPage.Controllers
         [HttpPost]
         public ActionResult Index(Movie movie)
         {
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+
             return View();
         }
     }
