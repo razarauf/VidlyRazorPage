@@ -39,7 +39,7 @@ namespace VidlyRazorPage.Controllers
             _context.Movies.Add(movie);
             _context.SaveChanges();
 
-            return View();
+            return RedirectToAction("Index");
         }
     }
 }
